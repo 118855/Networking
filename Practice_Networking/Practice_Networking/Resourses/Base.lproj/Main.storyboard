@@ -50,7 +50,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="didTapPostButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5zJ-QW-hSh"/>
+                                            <segue destination="7BU-P6-L6V" kind="show" id="ZE9-dZ-lvB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hN-J3-HgN">
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJp-V6-f5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.6376811594205" y="437.94642857142856"/>
+            <point key="canvasLocation" x="1825" y="845"/>
         </scene>
         <!--Image View Controller-->
         <scene sceneID="Adm-ST-MLy">
@@ -147,6 +147,7 @@
                             <constraint firstItem="BXY-oT-hBg" firstAttribute="top" secondItem="JEu-pQ-8Y1" secondAttribute="top" id="zqV-Mc-R6Y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="jxK-zr-haa"/>
                     <connections>
                         <outlet property="activityIndicator" destination="CPS-k7-nrM" id="yDr-ch-f1C"/>
                         <outlet property="imageView" destination="BXY-oT-hBg" id="OCw-or-UIU"/>
@@ -154,7 +155,67 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rxc-A6-BTS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.6376811594205" y="-258.48214285714283"/>
+            <point key="canvasLocation" x="1825" y="-570"/>
+        </scene>
+        <!--Upload Image View Controller-->
+        <scene sceneID="ZSD-Le-npa">
+            <objects>
+                <viewController id="7BU-P6-L6V" customClass="UploadImageViewController" customModule="Practice_Networking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tuc-4p-jcy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="W19-jt-hlm">
+                                <rect key="frame" x="87" y="287" width="240" height="322"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ir3-nG-kB6">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEr-ah-UAL">
+                                        <rect key="frame" x="0.0" y="197" width="240" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="SELECT IMAGE">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectImageButtonAction:" destination="7BU-P6-L6V" eventType="touchUpInside" id="oHw-si-aE6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyV-Qo-WU8">
+                                        <rect key="frame" x="0.0" y="289" width="240" height="33"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <state key="normal" title="UPLOAD IMAGE">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="uploadImageButtonAction:" destination="7BU-P6-L6V" eventType="touchUpInside" id="V1A-PD-vjJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="K2H-jF-9Z5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="W19-jt-hlm" firstAttribute="centerY" secondItem="tuc-4p-jcy" secondAttribute="centerY" id="Gym-X3-jHi"/>
+                            <constraint firstItem="W19-jt-hlm" firstAttribute="centerX" secondItem="tuc-4p-jcy" secondAttribute="centerX" id="MFm-Ii-xWK"/>
+                            <constraint firstItem="W19-jt-hlm" firstAttribute="top" secondItem="K2H-jF-9Z5" secondAttribute="top" constant="199" id="jz8-L9-Zs4"/>
+                            <constraint firstItem="W19-jt-hlm" firstAttribute="leading" secondItem="K2H-jF-9Z5" secondAttribute="leading" constant="87" id="zkQ-3G-Qcx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="rkt-tI-vSl"/>
+                    <connections>
+                        <outlet property="selectImageButton" destination="yEr-ah-UAL" id="3gk-JV-zUk"/>
+                        <outlet property="selectedImageView" destination="ir3-nG-kB6" id="APQ-yk-QdN"/>
+                        <outlet property="uploadImageButton" destination="qyV-Qo-WU8" id="P7H-0u-NBn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="idF-SF-YEI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1824.6376811594205" y="118.52678571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JRd-aC-tgV">
@@ -178,6 +239,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

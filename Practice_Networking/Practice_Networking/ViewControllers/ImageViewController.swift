@@ -32,6 +32,7 @@ class ImageViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.imageView.image = image
                     self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                 }
             }
         }.resume()
