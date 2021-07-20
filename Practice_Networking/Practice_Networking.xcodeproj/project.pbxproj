@@ -17,7 +17,7 @@
 		8436B41D26A2D31C00D3C543 /* UserMesseges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B41C26A2D31B00D3C543 /* UserMesseges.swift */; };
 		8436B44E26A5AB1900D3C543 /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8436B44D26A5AB1900D3C543 /* PostAPI.swift */; };
 		9510DE6F2305898F0099F8D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510DE6E2305898F0099F8D1 /* AppDelegate.swift */; };
-		9510DE712305898F0099F8D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510DE702305898F0099F8D1 /* ViewController.swift */; };
+		9510DE712305898F0099F8D1 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9510DE702305898F0099F8D1 /* FirstViewController.swift */; };
 		9510DE742305898F0099F8D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9510DE722305898F0099F8D1 /* Main.storyboard */; };
 		9510DE76230589900099F8D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9510DE75230589900099F8D1 /* Assets.xcassets */; };
 		9510DE79230589900099F8D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9510DE77230589900099F8D1 /* LaunchScreen.storyboard */; };
@@ -35,7 +35,7 @@
 		8436B44D26A5AB1900D3C543 /* PostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAPI.swift; sourceTree = "<group>"; };
 		9510DE6B2305898F0099F8D1 /* Practice_Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Practice_Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9510DE6E2305898F0099F8D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9510DE702305898F0099F8D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9510DE702305898F0099F8D1 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		9510DE732305898F0099F8D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9510DE75230589900099F8D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9510DE78230589900099F8D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 		8436B44826A5AA8400D3C543 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				9510DE702305898F0099F8D1 /* ViewController.swift */,
+				9510DE702305898F0099F8D1 /* FirstViewController.swift */,
 				8436B40426A1D99500D3C543 /* AllDataViewController.swift */,
 				8436B41826A2C40C00D3C543 /* UploadImageViewController.swift */,
 				8436B40126A1CD9700D3C543 /* ImageViewController.swift */,
@@ -208,7 +208,7 @@
 				8436B3FF26A1C3A900D3C543 /* NetworkManager.swift in Sources */,
 				8436B41D26A2D31C00D3C543 /* UserMesseges.swift in Sources */,
 				8436B40826A1F94200D3C543 /* Posts.swift in Sources */,
-				9510DE712305898F0099F8D1 /* ViewController.swift in Sources */,
+				9510DE712305898F0099F8D1 /* FirstViewController.swift in Sources */,
 				8436B44E26A5AB1900D3C543 /* PostAPI.swift in Sources */,
 				8436B40226A1CD9700D3C543 /* ImageViewController.swift in Sources */,
 				9510DE6F2305898F0099F8D1 /* AppDelegate.swift in Sources */,

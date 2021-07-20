@@ -9,14 +9,14 @@
 import UIKit
 
 class NetworkManager {
-     
-    private static var uniqueInstance: NetworkManager?
-    private init () {}
     
-    static func shared () -> NetworkManager {
-        if uniqueInstance == nil {
-            uniqueInstance = NetworkManager()
-        }
-        return uniqueInstance!
-    }
+    static var session = URLSession.shared
+    
+}
+
+struct Hosts {
+    
+    static var getImage = "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg"
+    static var postImage = "https://api.imgur.com/3/image"
+    static var getData = "https://jsonplaceholder.typicode.com/posts"
 }

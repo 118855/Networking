@@ -15,12 +15,14 @@ class UploadImageViewController: UIViewController {
     @IBOutlet private weak var selectImageButton: UIButton!
     @IBOutlet private weak var uploadImageButton: UIButton!
     
-    @IBOutlet private weak var urlTextView: UITextView!
+    var backgroundTaskIdentifier:UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     
     private var selectedImage: UIImage!
     private var imagePicker = UIImagePickerController()
     
     let CLIENT_ID = "5af4a79c42ea7df"
+    
+    let url = URL(string: "https://api.imgur.com/3/image")!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,21 +61,25 @@ class UploadImageViewController: UIViewController {
         
     }
     
-        @IBAction func uploadImageButtonAction(_ sender: UIButton) {
-            uploadImageToImgur(image: selectedImage )
-        }
+    @IBAction func uploadImageButtonAction(_ sender: UIButton) {
+        uploadImageToImgur(image: selectedImage )
+    }
     func uploadImageToImgur(image: UIImage) {
-        guard let imageData: Data = selectedImageView.image?.jpegData(compressionQuality: 1) else {return}
         
-        let session = URLSession.shared
-        let url = URL(string: "https://api.imgur.com/3/image")!
-        
+        guard let imageData: Data = selectedImageView.image?.jpegData(compressionQuality: 1),
+              let url = URL(string: Hosts.postImage) else {return}
+
+        DispatchQueue.global().async {
+            self.backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(withName: "backgroundTask") {
+                UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier)
+                self.backgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid }
+        }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("Client-ID \(self.CLIENT_ID)", forHTTPHeaderField: "Authorization")
         request.httpBody = imageData
         
-        session.dataTask(with: request) { (data, responce, error) in
+        NetworkManager.session.dataTask(with: request) { (data, responce, error) in
             guard let responce = responce,
                   let data = data else {return}
             print(responce)
@@ -84,8 +90,24 @@ class UploadImageViewController: UIViewController {
                 print(error)
             }
         }.resume()
+        
+        UIApplication.shared.endBackgroundTask(self.backgroundTaskIdentifier)
+        self.backgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     }
-    
+}
+extension UploadImageViewController: URLSessionDelegate {
+func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+    DispatchQueue.main.async {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let backgroundCompletionHandler =
+            appDelegate.backgroundCompletionHandler else {
+                return
+        }
+        backgroundCompletionHandler()
+    }
+}
+}
+extension UploadImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
         let imagePickerController = UIImagePickerController()
@@ -94,9 +116,6 @@ class UploadImageViewController: UIViewController {
         imagePickerController.sourceType = sourceType
         present(imagePickerController, animated: true, completion: nil)
     }
-}
-
-extension UploadImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let pickedImage = info[.originalImage] as? UIImage {

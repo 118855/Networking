@@ -10,21 +10,22 @@ import Foundation
 
 class PostAPI {
     static let shared = PostAPI()
-    
-    private let urlString = "https://jsonplaceholder.typicode.com/posts"
-    
+
     func fetchPosts (onCompletion: @escaping ([Post]) -> ()) {
-        guard let url = URL(string: urlString) else { return }
         
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, responce, error) in
-            guard let data = data else { return print("data nil") }
+        guard let url = URL(string: Hosts.getData) else {return}
+
+        NetworkManager.session.dataTask(with: url) { (data, responce, error) in
             
-            
-            guard let postsData = try? JSONDecoder().decode([Post].self, from: data) else {
-                return print("cant decode")}
-            onCompletion(postsData)
-            
+            guard let response = responce,
+                  let data = data else { return print("data nil") }
+            print(response)
+            do {
+             let postsData = try JSONDecoder().decode([Post].self, from: data)
+                onCompletion(postsData )
+            } catch {
+                print(error)
+            }
         }.resume()
     }
 }

@@ -20,14 +20,12 @@ class ImageViewController: UIViewController {
     }
     private func downloadImage() {
         
-        guard let url = URL(string: "https://applelives.com/wp-content/uploads/2016/03/iPhone-SE-11.jpeg") else {return}
-        
+        guard let url = URL(string: Hosts.getImage) else {return}
+
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        let session = URLSession.shared
-        
-        session.dataTask(with: url) {(data, responce, error) in
+        NetworkManager.session.dataTask(with: url) {(data, responce, error) in
             if let data = data, let image = UIImage(data: data) {
                 DispatchQueue.main.async {
                     self.imageView.image = image

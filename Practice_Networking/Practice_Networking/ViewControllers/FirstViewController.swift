@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FirstViewController.swift
 //  Practice_Networking
 //
 //  Created by anna on 8/15/19.
@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FirstViewController: UIViewController {
     
     @IBOutlet private weak var button: UIButton!
-
+    
+    let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+    
     @IBAction func didTapGetButton(_ sender: UIButton) {
         callGetRequest()
     }
@@ -25,12 +27,9 @@ class ViewController: UIViewController {
     }
     
     private func callGetRequest() {
-        
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
-        else {return}
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { (data, responce, error) in
+        guard let url = URL(string: Hosts.getData) else {return}
+
+        NetworkManager.session.dataTask(with: url) { (data, responce, error) in
             guard let responce = responce,
                   let data = data else {return}
             
